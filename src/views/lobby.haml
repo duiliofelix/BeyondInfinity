@@ -1,0 +1,22 @@
+- content_for :title do "Lobby" end
+
+%link(rel="stylesheet" href="/css/lobby.css")
+%nav#top-nav.navbar.bg-inverse.text-white
+  %div.nav
+    %a.nav-link(href='#')
+      Lobby
+    %a#link-systems.nav-link(href='#')
+      Systems
+    %a#link-planets.nav-link(href='#')
+      Planets
+
+#display.container-fluid.py-3
+  = haml :system_viewer
+  = haml :dialog
+
+%nav#bottom-nav.navbar.bg-inverse.text-white
+  Bottom bar
+
+%script(src='/js/dialog.js')
+%script(src='/js/systemViewer.js')
+%script(src='/js/lobby.js')
