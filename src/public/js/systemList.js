@@ -1,8 +1,9 @@
 class SystemList {
-  constructor(list) {
+  constructor(list, callback) {
     this.listDock = $(list);
     this.example = this.listDock.find('.example');
     this.systemList = this.listDock.find('.systems');
+    this.callback = callback;
   }
 
   listSystems() {
@@ -21,6 +22,7 @@ class SystemList {
   showList() {
     this.listDock.show();
 
+    let callback = this.callback;
     let example = this.example;
     let systemList = this.systemList;
 
@@ -29,6 +31,7 @@ class SystemList {
       let listItem = example.clone();
 
       listItem.find('.system-name').text(system.name);
+      listItem.find('.view-system').click(callback);
       listItem.removeClass('example');
 
       systemList.append(listItem);

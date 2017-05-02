@@ -3,7 +3,13 @@ class SystemViewer {
     this.viewer = $(viewer);
     this.example = this.viewer.find('.example');
     this.planetList = this.viewer.find('.planets');
+
     this.callback = callback;
+    this.viewer.find('.btn.capture').click(this, function(e) { e.data.captureSystem(); });
+  }
+
+  captureSystem() {
+    alert('capturing');
   }
 
   viewSystem(systemId) {

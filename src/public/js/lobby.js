@@ -18,6 +18,8 @@ $(document).ready(function() {
   let sv = new SystemViewer('#system-viewer', function() {
     alert();
   });
-  let sl = new SystemList('#system-list');
+  let sl = new SystemList('#system-list', function() {
+    sv.viewSystem(1);
+  });
   sl.listSystems();
 });
