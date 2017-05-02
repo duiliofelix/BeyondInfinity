@@ -21,6 +21,7 @@ class SystemViewer {
   }
 
   showSystem() {
+    this.viewer.show();
     this.viewer.find('.system-name').text(this.system.system.name);
 
     let callback = this.callback;
