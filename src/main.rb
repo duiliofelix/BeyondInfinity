@@ -59,3 +59,7 @@ get '/systems/:id' do |id|
 
   json system_with_planets
 end
+
+put '/systems/:id/capture' do |id|
+  json ({ message: 'ok' })
+end

@@ -9,7 +9,15 @@ class SystemViewer {
   }
 
   captureSystem() {
-    alert('capturing');
+    $.ajax({
+      url: '/systems/' + this.system.system.id + '/capture',
+      type: 'PUT',
+      context: this,
+      success: function(response) {
+        alert('captured');
+      },
+      error: function() {}
+    });
   }
 
   viewSystem(systemId) {
