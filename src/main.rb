@@ -6,7 +6,7 @@ require 'sequel/plugins/json_serializer'
 
 set :haml, :format => :html5
 
-DB = Sequel.connect('mysql://Jogo:Jogo@localhost/Jogo')
+DB = Sequel.connect('mysql://Jogo:Jogo@localhost/BeyondInfinity')
 
 DB.create_table?(:systems) do
   primary_key :id
@@ -16,6 +16,7 @@ end
 DB.create_table?(:planets) do
   primary_key :id
   String :name
+  Integer :owner
   foreign_key :system_id, :systems
 end
 
@@ -61,5 +62,10 @@ get '/systems/:id' do |id|
 end
 
 put '/systems/:id/capture' do |id|
+  system = System[id]
+
+  return json({ message: 'fail' }) if system.nil?
+
+  system.update(:owner => 0)
   json ({ message: 'ok' })
 end

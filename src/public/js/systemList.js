@@ -29,9 +29,11 @@ class SystemList {
     systemList.empty();
     $.each(this.systems, function(index, system) {
       let listItem = example.clone();
+      let viewButton = listItem.find('.view-system');
 
       listItem.find('.system-name').text(system.name);
-      listItem.find('.view-system').click(callback);
+      viewButton.click(callback);
+      viewButton.data('systemId', system.id);
       listItem.removeClass('example');
 
       systemList.append(listItem);

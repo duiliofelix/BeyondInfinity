@@ -1,4 +1,14 @@
 var dialog = new Dialog('#dialog');
+var sv = new SystemViewer('#system-viewer', function() {
+  alert();
+});
+var systemList = new SystemList('#system-list', function() {
+  sv.viewSystem($(this).data('systemId'));
+});
+
+$('#link-systems').click(function() {
+  systemList.listSystems();
+});
 
 $(document).ready(function() {
   dialog.dialog =  [
@@ -15,11 +25,5 @@ $(document).ready(function() {
 
   $('#display').outerHeight(h);
 
-  let sv = new SystemViewer('#system-viewer', function() {
-    alert();
-  });
-  let sl = new SystemList('#system-list', function() {
-    sv.viewSystem(1);
-  });
-  sl.listSystems();
+  systemList.listSystems();
 });

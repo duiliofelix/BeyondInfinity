@@ -14,7 +14,7 @@ class SystemViewer {
       type: 'PUT',
       context: this,
       success: function(response) {
-        alert('captured');
+        alert(response.message);
       },
       error: function() {}
     });
