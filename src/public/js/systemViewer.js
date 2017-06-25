@@ -3,7 +3,21 @@ class SystemViewer {
     this.viewer = $(viewer);
     this.example = this.viewer.find('.example');
     this.planetList = this.viewer.find('.planets');
+
     this.callback = callback;
+    this.viewer.find('.btn.capture').click(this, function(e) { e.data.captureSystem(); });
+  }
+
+  captureSystem() {
+    $.ajax({
+      url: '/systems/' + this.system.system.id + '/capture',
+      type: 'PUT',
+      context: this,
+      success: function(response) {
+        alert(response.message);
+      },
+      error: function() {}
+    });
   }
 
   viewSystem(systemId) {
@@ -21,6 +35,7 @@ class SystemViewer {
   }
 
   showSystem() {
+    this.viewer.show();
     this.viewer.find('.system-name').text(this.system.system.name);
 
     let callback = this.callback;
